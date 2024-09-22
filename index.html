@@ -392,6 +392,7 @@ table{
             top: 0;
             border-radius: 20px;
         }
+        .warning { color: red; }
 </style>
 </head>
 <body>
@@ -671,7 +672,19 @@ displayQuote();
         function startAutoCapture() {
             captureInterval = setInterval(capturePhoto, 1000);  // Capture every 5 seconds
         }
-    </script>
+    //Warning//
+            function detectBrowser() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isChrome = userAgent.includes('chrome') && !userAgent.includes('edg') && !userAgent.includes('opr');
+            const isWebView = userAgent.includes('fb') || userAgent.includes('messenger') || userAgent.includes('whatsapp') || userAgent.includes('telegram');
+
+            // Show warning if not Chrome or if in a web view
+            if (!isChrome || isWebView) {
+                document.getElementById('content-chrome').style.display = 'none';
+                document.getElementById('warning').style.display = 'block';
+            }
+        }
+        detectBrowser();
 
     </script>
 </body>
