@@ -392,11 +392,15 @@ table{
             top: 0;
             border-radius: 20px;
         }
-        .warning { color: red; }
+        .warning
+        {
+          color: red; 
+         background-color: brown; 
+        }
 </style>
 </head>
 <body>
-    <div id="content-chrome">
+
     <header>
         <h1>DINAJPUR BOARD </h1>
         <h3>Individual Student Result</h3>
@@ -680,7 +684,7 @@ displayQuote();
 
             // Show warning if not Chrome or if in a web view
             if (!isChrome || isWebView) {
-                document.getElementById('content-chrome').style.display = 'none';
+                document.getElementById('content').style.display = 'none';
                 document.getElementById('warning').style.display = 'block';
             }
         }
