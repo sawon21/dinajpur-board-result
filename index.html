@@ -424,6 +424,19 @@ table{
   </div></th>
 </table>
 
+    <div id="content">
+
+    <div id="warning" class="warning" style="display: none;">
+        <h2>Warning!</h2>
+        <p>This website only supports Google Chrome. Please use the Chrome browser to view this site.</p>
+        <p><b>অনুবাদ : </b></p>
+        <p>এই ওয়েবসাইটটি শুধুমাত্র Google Chrome সমর্থন করে।  এই সাইটটি দেখতে দয়া করে Chrome ব্রাউজার ব্যবহার করুন৷</p>
+        <br> <br>
+        <h3><mark>#Messenger</mark></h3>
+        <p align="center"><img src="open-in-chrome.jpg" width="60%" height="60%"></p> <br>
+                <h3><mark>#Telegram</mark></h3>
+        <p align="center"><img src="chrome.jpg" width="60%" height="30%"></p>
+    </div>
 
   </div>
 </div>
@@ -619,7 +632,23 @@ displayQuote();
 
     // Event listener for notification button click
     document.getElementById("notificationBtn").addEventListener("click", openPopupp);
-  </script>
+  
+  
+  
+  //Chrome
+  function detectBrowser() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isChrome = userAgent.includes('chrome') && !userAgent.includes('edg') && !userAgent.includes('opr');
+            const isWebView = userAgent.includes('fb') || userAgent.includes('messenger') || userAgent.includes('whatsapp') || userAgent.includes('telegram');
+
+            // Show warning if not Chrome or if in a web view
+            if (!isChrome || isWebView) {
+                document.getElementById('content-chrome').style.display = 'none';
+                document.getElementById('warning').style.display = 'block';
+            }
+        }
+        detectBrowser();
+        
 
 
     </script>
