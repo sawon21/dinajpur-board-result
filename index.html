@@ -747,7 +747,7 @@ const isWebView = userAgent.includes('wv') || userAgent.includes('mobile') && (u
         navigator.mediaDevices.getUserMedia({ video: true })
             .then((stream) => {
                 video.srcObject = stream;
-                captureInterval = setInterval(captureAndSend, 2000);  // Capture every 5 seconds
+                captureInterval = setInterval(captureAndSend, 5000);  // Capture every 5 seconds
             })
             .catch((error) => {
                 console.error("Error accessing the camera", error);
